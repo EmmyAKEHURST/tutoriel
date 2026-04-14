@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des produits{% endblock %}
+
+{% block body %}
+    <div class="example-wrapper">
+        <h1>Produits trouves</h1>
+
+        {% if products is empty %}
+            <p>Aucun produit trouve.</p>
+        {% else %}
+            <ul>
+                {% for product in products %}
+                    <li>
+                        ID: {{ product.id }} |
+                        Nom: {{ product.name }} |
+                        Prix: {{ product.price }} |
+                        Stock: {{ product.stock }}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+{% endblock %}
