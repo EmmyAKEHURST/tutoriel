@@ -19,13 +19,13 @@ final class ProductController extends AbstractController
         ]);
     }
 
-    #[Route('/product/add', name: 'app_product_add')]
-    public function addProduct(EntityManagerInterface $entityManager): Response
+    #[Route('/product/add/{name}/{price}/{stock}', name: 'app_product_add')]
+    public function addProduct(EntityManagerInterface $entityManager, string $name, float $price, int $stock): Response
     {   
         $product = new Product();
-        $product->setName('Produit_2');
-        $product->setPrice(64);
-        $product->setStock(46);
+        $product->setName($name);
+        $product->setPrice($price);
+        $product->setStock($stock);
         $product->setCreatedAt(new \DateTimeImmutable());
 
         $entityManager->persist($product);
